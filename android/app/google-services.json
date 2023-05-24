@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "311277694881",
+    "project_id": "eatsure-12b5e",
+    "storage_bucket": "eatsure-12b5e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:311277694881:android:6e34fc89457a6c7aabe5e0",
+        "android_client_info": {
+          "package_name": "com.eatsure.eatsure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "311277694881-og3i2aj5k84kq2n2palvr30s6iijimf1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCocZi0z60Ace1uolPfi4BIG56zt69Epw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "311277694881-og3i2aj5k84kq2n2palvr30s6iijimf1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
