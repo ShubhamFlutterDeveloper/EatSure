@@ -19,14 +19,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'asocial_Task.dart';
 import 'circlewave.dart';
+import 'dragg_drop.dart';
 import 'ev_project_task/ev_SplashScreen.dart';
 import 'ev_project_task/ev_login_Screen.dart';
 import 'evone_task.dart';
 import 'expension_Panal.dart';
 import 'flutter_slidable.dart';
 import 'googlemap.dart';
+import 'gridViewClass.dart';
+import 'gridView_Task.dart';
 import 'jsonEcoder.dart';
 import 'list_View.dart';
+import 'list_view_builder.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,8 +53,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home:
-      // EVLoginScreen()
-      EvSplashScreen()
+      VideoApp()
+      //EVLoginScreen()
+      //EvSplashScreen()
       //RefreshIndicatorTask()
       //EvoneTask()
       //VerificationScreen(verificationId: 'fssfv',)
@@ -91,16 +96,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
       body:GestureDetector(
@@ -128,13 +126,12 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(onPressed: () {
               auth.verifyPhoneNumber(
                   phoneNumber: "+91${_phoneVerificontroller.text}",
-                  verificationCompleted: (_){
-                  },
+                  verificationCompleted: (_){},
                   verificationFailed: (e){},
                   codeSent: (String? verificationId,int? token){
                   Navigator.push(context,MaterialPageRoute(builder: (context) => VerificationScreen(verificationId: 'verificationId',),));
                   },
-              codeAutoRetrievalTimeout: (String verificationId) {  }
+              codeAutoRetrievalTimeout: (String verificationId) { }
               );
             },
                 child:Text("Login with Phone"))

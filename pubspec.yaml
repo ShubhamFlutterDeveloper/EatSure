@@ -56,6 +56,9 @@ dependencies:
   flutter_slidable: ^3.0.0
   flutter_svg: ^2.0.4
   dio: ^5.1.1
+  path_drawing: ^1.0.1
+  video_player: ^2.6.1
+
 
 dev_dependencies:
   flutter_test:
