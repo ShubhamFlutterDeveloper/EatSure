@@ -8,7 +8,6 @@ class ScrollBarEx extends StatefulWidget {
 }
 
 class _ScrollBarExState extends State<ScrollBarEx> {
-  bool _isAlwaysShown = true;
 
   bool _showTrackOnHover = false;
   @override

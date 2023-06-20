@@ -18,6 +18,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'asocial_Task.dart';
+import 'bottom_tabbar.dart';
 import 'circlewave.dart';
 import 'dragg_drop.dart';
 import 'ev_project_task/ev_SplashScreen.dart';
@@ -53,7 +54,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home:
-      VideoApp()
+      BottomTabBarPage()
+     // VideoApp()
       //EVLoginScreen()
       //EvSplashScreen()
       //RefreshIndicatorTask()

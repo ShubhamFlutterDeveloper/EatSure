@@ -69,8 +69,14 @@ class _DragDropTaskState extends State<DragDropTask> {
   }
 }
 */
+import 'dart:math';
+
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
+
+import 'galleryImage.dart';
 
 class VideoApp extends StatefulWidget {
   const VideoApp({super.key});
@@ -79,108 +85,134 @@ class VideoApp extends StatefulWidget {
   _VideoAppState createState() => _VideoAppState();
 }
 
-class _VideoAppState extends State<VideoApp>
-    with SingleTickerProviderStateMixin {
-  late VideoPlayerController videocontroller;
-  late AnimationController _animationcontroller;
+class _VideoAppState extends State<VideoApp> with SingleTickerProviderStateMixin {
+   VideoPlayerController? videocontroller;
+   AnimationController? _animationcontroller;
   Animation? animation;
-  double animationDoublevalue = 0.0;
+  Animation<double>? _curve;
+  double animationDoublevalue=0.0 ;
 
-  @override
-  void dispose() {
-    super.dispose();
-    videocontroller.dispose();
-    _animationcontroller.dispose();
-  }
-
+   late ConfettiController _centerController;
   @override
   void initState() {
     super.initState();
+    _centerController = ConfettiController(duration:  Duration(seconds:20));
+    _centerController.play();
     videocontroller = VideoPlayerController.network(
         'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4')
       ..initialize().then((_) {
-        videocontroller.setLooping(true);
-        videocontroller.play();
+       // videocontroller?.setLooping(true);
+        videocontroller?.play();
         setState(() {});
       });
-    _animationcontroller = AnimationController(duration: Duration(milliseconds: videocontroller.value.duration.inMilliseconds),vsync: this);
-    animation = Tween(begin: 0.0, end:videocontroller.value.duration.inMilliseconds).animate(CurvedAnimation(parent: _animationcontroller, curve: Curves.linear))
-      ..addListener(() {
+    _animationcontroller = AnimationController(duration: Duration(milliseconds: videocontroller?.value.duration.inMilliseconds??0),vsync: this);
+    _curve=CurvedAnimation(parent: _animationcontroller!, curve: Curves.linear);
+    animation = Tween(begin: 0.0, end:300).animate(_curve!)..addListener(() {
         setState(() {
           animationDoublevalue = double.parse(animation?.value.toString() ?? '');
+          print('value print-->$animationDoublevalue');
         });
       });
-
+    _animationcontroller?.reset();
+    videocontroller?.addListener(() {
+      setState(() {});
+    });
   }
+   @override
+   void dispose() {
+     super.dispose();
+     videocontroller?.dispose();
+     _animationcontroller?.dispose();
+     _centerController.dispose();
+   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Video Demo',
-      home: Scaffold(
-        body: Stack(
-          children: [
-            SizedBox.expand(
-              child: FittedBox(
-                fit: BoxFit.cover,
-                child: SizedBox(
-                  width: videocontroller.value.size.width,
-                  height: videocontroller.value.size.height,
-                  child: VideoPlayer(videocontroller),
+    return SafeArea(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Video Demo',
+        home: Scaffold(
+          body: Stack(
+            children: [
+              SizedBox.expand(
+                child: FittedBox(
+                  fit: BoxFit.cover,
+                  child: SizedBox(
+                    width: videocontroller?.value.size.width,
+                    height: videocontroller?.value.size.height,
+                    child: VideoPlayer(videocontroller!),
+                  ),
                 ),
               ),
-            ),
-            Positioned(
-                bottom: 20,
-                left: 35,
-                child: Container(
-                  height: 80,
-                  width: 300,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.white,
-                  ),
-                )),
-            Positioned(
-                bottom: 20,
-                left: 35,
-                child: Container(
-                  height: 80,
-                  width: animationDoublevalue,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      gradient: LinearGradient(
-                        colors: [
-                          Color(0xffffcdd2),
-                          Color(0xff42a5f5),
-                        ],
-                      )),
-                )),
-            Positioned(
-                bottom: 20,
-                left: 40,
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      videocontroller.value.isPlaying ? _animationcontroller.forward(): _animationcontroller.reset();
-                    });
-                    print('hvvh');
-                  },
+              Align(
+                alignment: Alignment.topLeft,
+                child: ConfettiWidget(
+                  confettiController: _centerController,
+                  blastDirection: pi / 2,
+                 // blastDirectionality : BlastDirectionality.explosive,
+                  particleDrag: 0.05,
+                  maxBlastForce: 5,
+                  minBlastForce: 1,
+                  emissionFrequency: 0.03,
+                  numberOfParticles: 10,
+                  gravity: 0,
+                  shouldLoop: true,
+                ),
+              ),
+              Positioned(
+                  bottom: 20,
+                  left: 35,
                   child: Container(
                     height: 80,
                     width: 300,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
                     ),
-                    child: Center(
-                        child: Text(
-                      "Click here",
-                      style: TextStyle(fontSize: 20),
-                    )),
-                  ),
-                ))
-          ],
+                  )),
+              Positioned(
+                  bottom: 20,
+                  left: 35,
+                  child: Container(
+                    height: 80,
+                    width: animationDoublevalue,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        gradient: LinearGradient(
+                          colors: [
+                            Color(0xffffcdd2),
+                            Color(0xff42a5f5),
+                          ],
+                        )),
+                  )),
+              Positioned(
+                  bottom: 20,
+                  left: 40,
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                       if(videocontroller?.value.position==videocontroller?.value.duration){
+                         Get.to(GalleryImage);
+                       }
+                      });
+                      print('hvvh');
+                    },
+                    child: Container(
+                      height: 80,
+                      width: 300,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Center(
+                          child: Text(
+                        "Click here",
+                        style: TextStyle(fontSize: 20),
+                      )),
+                    ),
+                  ))
+            ],
+          ),
         ),
       ),
     );

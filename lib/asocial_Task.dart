@@ -100,8 +100,8 @@ class _AsocialAppState extends State<AsocialApp> {
                                           :LinearGradient(
                                           colors: [Color(0xffe5dde6),Color(0xffe5dde6)])
                                       ),
-                                      child: Center(child:
-                                      Text("${interestsList.body?[index].intrestList?[i].name}",
+                                      child: Center(
+                                          child: Text("${interestsList.body?[index].intrestList?[i].name}",
                                         style: TextStyle(fontSize: 15),))),
                                 );
 
