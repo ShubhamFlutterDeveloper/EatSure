@@ -32,6 +32,7 @@ import 'gridView_Task.dart';
 import 'jsonEcoder.dart';
 import 'list_View.dart';
 import 'list_view_builder.dart';
+import 'motion_bottom_bar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,7 +55,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home:
-      BottomTabBarPage()
+      MotionBottomTabBar()
+     // BottomTabBarPage()
      // VideoApp()
       //EVLoginScreen()
       //EvSplashScreen()

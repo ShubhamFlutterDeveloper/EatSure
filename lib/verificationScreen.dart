@@ -57,7 +57,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                           builder: (context) => ScrollBarEx(),
                         ));
                   } catch (e) {
-
+                    print(e.toString());
                   }
                 },
                 child: Text("Login")),
