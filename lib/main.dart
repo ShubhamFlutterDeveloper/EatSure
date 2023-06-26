@@ -9,6 +9,7 @@ import 'package:eatsure/refresh_indicator.dart';
 import 'package:eatsure/rippleanimation.dart';
 import 'package:eatsure/rotatetrans.dart';
 import 'package:eatsure/scrollbar.dart';
+import 'package:eatsure/sqlite_example/sqflite_data_show.dart';
 import 'package:eatsure/tweenanimat.dart';
 import 'package:eatsure/urlLauncher.dart';
 import 'package:eatsure/verificationScreen.dart';
@@ -17,6 +18,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
 import 'asocial_Task.dart';
 import 'bottom_tabbar.dart';
 import 'circlewave.dart';
@@ -29,6 +31,7 @@ import 'flutter_slidable.dart';
 import 'googlemap.dart';
 import 'gridViewClass.dart';
 import 'gridView_Task.dart';
+import 'hunter_task/hunter_setting.dart';
 import 'jsonEcoder.dart';
 import 'list_View.dart';
 import 'list_view_builder.dart';
@@ -46,32 +49,37 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-
-        debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        fontFamily: "IBMPlexSansThai-Regular",
-        primarySwatch: Colors.blue,
-      ),
-      home:
-      MotionBottomTabBar()
-     // BottomTabBarPage()
-     // VideoApp()
-      //EVLoginScreen()
-      //EvSplashScreen()
-      //RefreshIndicatorTask()
-      //EvoneTask()
-      //VerificationScreen(verificationId: 'fssfv',)
-      //RipplesAnimation()
-      //ExpansionPanal()
-     //AsocialApp()
-        //ListVieww()
-        //ScrollBarEx()
-      //JsonEcoder1()
-      //DeviceInfo()
-      //SongList()
-    // MyHomePage(title: 'Flutter Demo Home Page'),
+    return Sizer(
+        builder:(context, orientation, deviceType) {
+          return GetMaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'Flutter Demo',
+              theme: ThemeData(
+                fontFamily: "IBMPlexSansThai-Regular",
+                primarySwatch: Colors.blue,
+              ),
+              home:
+              HunterSetting()
+            // MainScreen()
+            // MotionBottomTabBar()
+            // BottomTabBarPage()
+            // VideoApp()
+            //EVLoginScreen()
+            //EvSplashScreen()
+            //RefreshIndicatorTask()
+            //EvoneTask()
+            //VerificationScreen(verificationId: 'fssfv',)
+            //RipplesAnimation()
+            //ExpansionPanal()
+            //AsocialApp()
+            //ListVieww()
+            //ScrollBarEx()
+            //JsonEcoder1()
+            //DeviceInfo()
+            //SongList()
+            // MyHomePage(title: 'Flutter Demo Home Page'),
+          );
+        }
     );
   }
 }

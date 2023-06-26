@@ -45,6 +45,7 @@ dependencies:
   google_maps_webservice: ^0.0.20-nullsafety.5
   flutter_google_places_hoc081098: ^1.0.0-nullsafety.5
   path_provider: ^2.0.14
+  sizer: ^2.0.13
   firebase_core: ^2.9.0
   firebase_auth: ^4.4.0
   cloud_firestore: ^4.5.0
@@ -60,6 +61,7 @@ dependencies:
   video_player: ^2.6.1
   confetti: ^0.7.0
   motion_tab_bar_v2: ^0.2.6
+  sqflite: ^2.2.8+4
 
 
 dev_dependencies:
