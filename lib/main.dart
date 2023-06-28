@@ -31,7 +31,7 @@ import 'flutter_slidable.dart';
 import 'googlemap.dart';
 import 'gridViewClass.dart';
 import 'gridView_Task.dart';
-import 'hunter_task/hunter_setting.dart';
+import 'hunter_task/huntfish_setting.dart';
 import 'jsonEcoder.dart';
 import 'list_View.dart';
 import 'list_view_builder.dart';
@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
                 primarySwatch: Colors.blue,
               ),
               home:
-              HunterSetting()
+              HuntingFlishSetting()
             // MainScreen()
             // MotionBottomTabBar()
             // BottomTabBarPage()

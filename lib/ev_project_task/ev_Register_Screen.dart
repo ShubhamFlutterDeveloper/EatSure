@@ -348,7 +348,7 @@ class _EvRegisterScreenState extends State<EvRegisterScreen> {
         });
       }
   }
-  Future<void> postSignInHttp()async {
+ /* Future<void> postSignInHttp()async {
     var request=SignupRequest(
       email: emailController.text,
       phone: phoneController.text,
@@ -380,5 +380,5 @@ class _EvRegisterScreenState extends State<EvRegisterScreen> {
       print(e.toString());
     }
     return null;
-  }
+  }*/
 }
