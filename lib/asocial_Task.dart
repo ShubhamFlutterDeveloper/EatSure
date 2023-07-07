@@ -59,7 +59,7 @@ class _AsocialAppState extends State<AsocialApp> {
                     scrollDirection: Axis.vertical,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.only(left:10),
+                        padding: EdgeInsets.only(left:10),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

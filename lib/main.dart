@@ -7,6 +7,7 @@ import 'package:eatsure/interZoom.dart';
 import 'package:eatsure/newRipple.dart';
 import 'package:eatsure/refresh_indicator.dart';
 import 'package:eatsure/rippleanimation.dart';
+import 'package:eatsure/rocket_fly.dart';
 import 'package:eatsure/rotatetrans.dart';
 import 'package:eatsure/scrollbar.dart';
 import 'package:eatsure/sqlite_example/sqflite_data_show.dart';
@@ -59,7 +60,8 @@ class MyApp extends StatelessWidget {
                 primarySwatch: Colors.blue,
               ),
               home:
-              HuntingFlishSetting()
+              RocketFly()
+              //HuntingFlishSetting()
             // MainScreen()
             // MotionBottomTabBar()
             // BottomTabBarPage()
