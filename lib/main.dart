@@ -11,6 +11,7 @@ import 'package:eatsure/rocket_fly.dart';
 import 'package:eatsure/rotatetrans.dart';
 import 'package:eatsure/scrollbar.dart';
 import 'package:eatsure/sqlite_example/sqflite_data_show.dart';
+import 'package:eatsure/swipe_button.dart';
 import 'package:eatsure/tweenanimat.dart';
 import 'package:eatsure/urlLauncher.dart';
 import 'package:eatsure/verificationScreen.dart';
@@ -23,6 +24,7 @@ import 'package:sizer/sizer.dart';
 import 'asocial_Task.dart';
 import 'bottom_tabbar.dart';
 import 'circlewave.dart';
+import 'dataSave.dart';
 import 'dragg_drop.dart';
 import 'ev_project_task/ev_SplashScreen.dart';
 import 'ev_project_task/ev_login_Screen.dart';
@@ -60,7 +62,9 @@ class MyApp extends StatelessWidget {
                 primarySwatch: Colors.blue,
               ),
               home:
-              RocketFly()
+              SwipeButton()
+             // DataSave()
+              //RocketFly()
               //HuntingFlishSetting()
             // MainScreen()
             // MotionBottomTabBar()
